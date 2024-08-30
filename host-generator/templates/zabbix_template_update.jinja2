@@ -1,0 +1,20 @@
+{
+    "jsonrpc": "2.0",
+    "method": "host.update",
+    "params": {
+        "hostid": "{{ host_id }}",
+        "host": "{{ host_name }}",
+        "groups": [
+            {
+                "groupid": "{{ group_id | int }}"
+            }
+        ],
+        "templates": [
+            {
+                "templateid": "{{ template_id }}"
+            }
+        ]
+    },
+    "auth": "{{ auth_token }}",
+    "id": 1
+}

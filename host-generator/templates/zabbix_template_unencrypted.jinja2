@@ -1,0 +1,42 @@
+{
+  "jsonrpc": "2.0",
+  "method": "host.create",
+  "params": {
+    "host": "{{ host_name | default('') }}",
+    "status": 1,
+    "interfaces": [
+      {
+        "type": 2,
+        "main": 1,
+        "useip": 1,
+        "ip": "{{ ip_address | default('') }}",
+        "dns": "",
+        "port": "161"
+      }
+    ],
+    "groups": [
+      {
+        "groupid": "{{ group_id | default('') }}"
+      }
+    ],
+    "templates": [
+      {
+        "templateid": "{{ template_id | default('') }}"
+      }
+    ],
+    {% if tags %}
+    "tags": {{ tags | tojson }},
+    {% endif %}
+    {% if macros %}
+    "macros": {{ macros | tojson }},
+    {% endif %}
+    {% if inventory_mode is defined %}
+    "inventory_mode": {{ inventory_mode }},
+    {% endif %}
+    {% if inventory %}
+    "inventory": {{ inventory | tojson }},
+    {% endif %}
+  },
+  "auth": "{{ auth_token | default('') }}",
+  "id": 1
+}

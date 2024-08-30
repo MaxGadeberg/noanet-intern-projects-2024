@@ -1,0 +1,38 @@
+{
+  "jsonrpc": "2.0",
+  "method": "host.create",
+  "params": {
+    "host": "{{ host_name | default('') }}",
+    "status": 1,
+    "interfaces": [
+      {
+        "type": 2,
+        "main": 1,
+        "useip": 1,
+        "ip": "{{ ip_address | default('') }}",
+        "dns": "",
+        "port": "161"
+      }
+    ],
+    "groups": [
+      {
+        "groupid": "{{ group_id | default('') }}"
+      }
+    ],
+    "templates": [
+      {
+        "templateid": "{{ template_id | default('') }}"
+      }
+    ],
+    {% if encrypted_value %}
+    "macros": [
+      {
+        "macro": "{$ENCRYPTED_MACRO}",
+        "value": "{{ encrypted_value | default('') }}"
+      }
+    ]
+    {% endif %}
+  },
+  "auth": "{{ auth_token | default('') }}",
+  "id": 1
+}

@@ -1,0 +1,7 @@
+[zabbix]
+url = https://zabbix.example.net/api_jsonrpc.php
+auth_token = token
+
+[snow]
+username = user
+password = pass
